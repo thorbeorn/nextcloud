@@ -67,8 +67,8 @@ function download_nextcloud() {
     else
         mkdir /temp
     fi
-    #wget https://download.nextcloud.com/server/releases/latest.zip -O /temp/latest.zip
-    cp /root/latest.zip /temp/latest.zip
+    wget https://download.nextcloud.com/server/releases/latest.zip -O /temp/latest.zip
+    #cp /root/latest.zip /temp/latest.zip
 
     unzip /temp/latest.zip -d /temp
     rm -f /temp/latest.zip

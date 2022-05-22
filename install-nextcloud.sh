@@ -1,7 +1,4 @@
-#!/bin/bash -xe
-
-apt -y update 
-apt -y upgrade
+#!/bin/bash
 
 function software_check() {
     which "$1" | grep -o "$1" > /dev/null &&  return 0 || return 1
@@ -67,8 +64,8 @@ function download_nextcloud() {
     else
         mkdir /temp
     fi
-    wget https://download.nextcloud.com/server/releases/latest.zip -O /temp/latest.zip
-    #cp /root/latest.zip /temp/latest.zip
+    #wget https://download.nextcloud.com/server/releases/latest.zip -O /temp/latest.zip
+    cp /root/latest.zip /temp/latest.zip
 
     unzip /temp/latest.zip -d /temp
     rm -f /temp/latest.zip
@@ -148,10 +145,11 @@ function save() {
     echo "[servername] est à changer par votre serverName" >> /temp/nextcloud.txt
 }
 
+apt -y update 
+apt -y upgrade
+
 install_BDD
 install_web
 download_nextcloud
 configure_web
 save
-
-#pas oublier supprimer cp et mettre le wget
